@@ -16,6 +16,6 @@ func palindromable(str []rune) bool {
 			oddCountLetters[i] = 1
 		}
 	}
-	// if oddCountLetters length should be equal to 1 or 0
+	// oddCountLetters length should be equal to 1 or 0
 	return len(oddCountLetters) <= 1
 }
