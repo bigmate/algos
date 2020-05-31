@@ -9,7 +9,7 @@ func Pow(x float64, n int) float64 {
 	}
 	if n < 0 {
 		x = 1 / x
-        n *= -1
+        	n *= -1
 	}
 	var product float64 = x
 	var result float64 = 1
