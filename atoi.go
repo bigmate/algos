@@ -1,3 +1,4 @@
+// +build NOT 386
 package atoi
 
 import (
