@@ -2,12 +2,6 @@ import re
 from functools import reduce
 from abc import ABC, abstractmethod
 from typing import List, Tuple
-from enum import IntEnum
-
-
-class TermType(IntEnum):
-    COEFFICIENT = 0
-    VARIABLE = 1
 
 
 class Term(ABC):
@@ -18,19 +12,7 @@ class Term(ABC):
         self.coeff *= -1
 
     @abstractmethod
-    def __str__(self):
-        raise NotImplementedError
-
-    def __repr__(self):
-        return str(self)
-
-    @abstractmethod
     def __add__(self, other):
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def type(self) -> TermType:
         raise NotImplementedError
 
 
@@ -39,27 +21,13 @@ class Variable(Term):
         super().__init__(coeff)
         self.var = var
 
-    def __str__(self):
-        return f"{self.coeff}{self.var}"
-
     def __add__(self, other):
         return Variable(self.coeff + other.coeff, self.var)
 
-    @property
-    def type(self) -> TermType:
-        return TermType.VARIABLE
-
 
 class Coefficient(Term):
-    def __str__(self):
-        return f"{self.coeff}"
-
     def __add__(self, other):
         return Coefficient(self.coeff + other.coeff)
-
-    @property
-    def type(self) -> TermType:
-        return TermType.COEFFICIENT
 
 
 class Equation:
